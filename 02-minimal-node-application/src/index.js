@@ -1,18 +1,17 @@
-import 'dotenv/config';     // for getting .env file
-import 'cross-fetch/polyfill'   // dependency apolo-boost
+import 'dotenv/config'; // for getting .env file
+import 'cross-fetch/polyfill'; // dependency apolo-boost
 import ApolloClient, { gql } from 'apollo-boost';
 
 const client = new ApolloClient({
-  uri: 'https://api.github.com/graphql',      // Github GraphQL Server
-  request: operation => {
+  uri: 'https://api.github.com/graphql', // Github GraphQL Server
+  request: (operation) => {
     operation.setContext({
       headers: {
-        authorization: `Bearer ${process.env.GITHUB_TOKEN_ACCESS}`
-      }
+        authorization: `Bearer ${process.env.GITHUB_TOKEN_ACCESS}`,
+      },
     });
-  }
+  },
 });
-
 
 // React => Axios => Github gql
 // Node => Apollo-boost => Github gql
@@ -31,15 +30,12 @@ const client = new ApolloClient({
 //   query: GET_ORG_DETAILS
 // }).then(res => console.log('GET_ORG_DETAILS >>>', res));
 
-
 // Data Scraping
 // AI
 
 // Server => Request (daraz => Mobile Price) => Database  ???? (Client/React)
 
 // React => Server => (Database) => Response Client (UI)
-
-
 
 // // Query with Variables
 
@@ -68,9 +64,6 @@ const client = new ApolloClient({
 // .then(res => console.log('GET_ORG_DETAILS_VARIABLE >>>', res))
 // .catch(err => console.log('Err: ', err));
 
-
-
-
 // // MUTATION
 
 const ADD_STAR = gql`
@@ -81,13 +74,14 @@ const ADD_STAR = gql`
       }
     }
   }
-`
+`;
 
-client.mutate({
-  mutation: ADD_STAR,
-  variables: {
-    repoId: "MDEwOlJlcG9zaXRvcnkzODc1MTIzNjA="
-  }
-})
-  .then(d => console.log(JSON.stringify(d)))
-  .catch(err => console.log('Err: ', err));
+client
+  .mutate({
+    mutation: ADD_STAR,
+    variables: {
+      repoId: 'MDEwOlJlcG9zaXRvcnkzODc1MTIzNjA=',
+    },
+  })
+  .then((d) => console.log(JSON.stringify(d)))
+  .catch((err) => console.log('Err: ', err));

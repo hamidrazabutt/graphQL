@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'REACT_APP_BASEURL', // Github (You can get from .env file or Direct put here:'https://api.github.com',)
+  baseURL: 'https://api.github.com',
+  // Github (You can get from .env file REACT_APP_BASEURL, or Direct put here:'https://api.github.com',)
   headers: {
     Authorization: `bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`, // access token
   },
@@ -35,7 +36,7 @@ function GithubAPI() {
   //     console.log('GraphQL Response: ', res);
   //   };
 
-  const fetchData_js = async organizationName => {
+  const fetchData_ql = async organizationName => {
     const QUERY_ORGANIZATION = `query queryOrganization($organizationName: String!){
               organization(login: $organizationName) {
                   name
@@ -87,8 +88,8 @@ function GithubAPI() {
   };
 
   useEffect(() => {
-    fetchData_js('qutbITech');
-    //   addStart('MDEwOlJlcG9zaXRvcnkzODc1MTIzNjA=');
+    fetchData_ql('qutbITech');
+    addStart('MDEwOlJlcG9zaXRvcnkzODc1MTIzNjA=');
   }, []);
 
   return <div></div>;
