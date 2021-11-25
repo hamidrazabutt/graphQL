@@ -1,19 +1,27 @@
 const users = [
-    {
-        name: 'Paulo',
-        age: 15,
-        married: true
-    },
-    {
-        name: 'Angela',
-        age: 20,
-        married: false
-    },
-    {
-        name: 'Hassan Ali',
-        age: 20,
-        married: false
-    }
+  {
+    name: 'Paulo',
+    age: 15,
+    married: true,
+  },
+  {
+    name: 'Angela',
+    age: 20,
+    married: false,
+  },
+  {
+    name: 'Hassan Ali',
+    age: 20,
+    married: false,
+  },
 ];
 
-export { users }
+const posts = [
+  {
+    name: 'My First Post',
+    age: 15,
+    married: true,
+  },
+];
+
+export { users, posts };

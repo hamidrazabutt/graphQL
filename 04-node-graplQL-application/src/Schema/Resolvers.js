@@ -1,10 +1,13 @@
-import { users } from '../Mock_Data';
+import { users, posts } from '../Mock_Data';
 import { pubsub } from './index';
 
 export const resolvers = {
   Query: {
     getAllUsers() {
       return users;
+    },
+    getPost() {
+      return posts[0];
     },
   },
   Mutation: {
